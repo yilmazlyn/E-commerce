@@ -79,5 +79,5 @@ const products = [
   },
 ]
 
-//Commun JS language for exports something in nodejs
-module.exports = products
+//Commun ES6 Module for exporting
+export default products
