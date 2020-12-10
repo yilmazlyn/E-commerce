@@ -9,6 +9,9 @@ import CartScreen from './screens/CartScreen.js'
 import RegisterScreen from './screens/RegisterScreen'
 import LoginScreen from './screens/LoginScreen.js'
 import ProfileScreen from './screens/ProfileScreen'
+import ShippingScreen from './screens/ShippingScreen'
+import PaymentScreen from './screens/PaymentScreen'
+import PlaceOrderScreen from './screens/PlaceOrderScreen'
 
 const App = () => {
   return (
@@ -22,6 +25,9 @@ const App = () => {
           <Route path='/product/:id' component={ProductScreen} />
           {/* ? operator is to say that, id is optional, means that, cart page accessible by id or without */}
           <Route path='/cart/:id?' component={CartScreen} />
+          <Route path='/shipping' component={ShippingScreen} />
+          <Route path='/payment' component={PaymentScreen} />
+          <Route path='/placeorder' component={PlaceOrderScreen} />
           <Route path='/' component={HomeScreen} exact />
         </Container>
       </main>
