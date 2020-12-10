@@ -9,7 +9,7 @@ const ShippingScreen = ({ history }) => {
   const cart = useSelector((state) => state.cart)
   const { shippingAddress } = cart
 
-  const [address, setAdresse] = useState(shippingAddress.address)
+  const [address, setAddresse] = useState(shippingAddress.address)
   const [city, setCity] = useState(shippingAddress.city)
   const [postalCode, setPostalCode] = useState(shippingAddress.postalCode)
   const [country, setCountry] = useState(shippingAddress.country)
@@ -28,13 +28,13 @@ const ShippingScreen = ({ history }) => {
       <h1>Shipping</h1>
       <Form onSubmit={submitHandler}>
         <Form.Group controlId='country'>
-          <Form.Label>Adresse</Form.Label>
+          <Form.Label>Addresse</Form.Label>
           <Form.Control
             type='country'
             placeholder='Enter country'
             value={country}
             required
-            onChange={(e) => setAdresse(e.target.value)}
+            onChange={(e) => setAddresse(e.target.value)}
           ></Form.Control>
         </Form.Group>
 
