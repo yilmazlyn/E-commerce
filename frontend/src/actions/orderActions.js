@@ -10,7 +10,12 @@ import {
   ORDER_PAY_REQUEST,
   ORDER_PAY_SUCCESS,
   ORDER_PAY_FAIL,
-} from '../constants/orderConstants'
+  ORDER_LIST_MY_REQUEST,
+  ORDER_LIST_MY_SUCCESS,
+  ORDER_LIST_MY_FAIL,
+} from '../constants/orderConstants.js'
+
+import { logout } from './userActions'
 
 export const createOrder = (order) => async (dispatch, getState) => {
   try {
@@ -76,7 +81,6 @@ export const getOrderDetails = (id) => async (dispatch, getState) => {
     })
   }
 }
-
 export const payOrder = (orderId, paymentResult) => async (
   dispatch,
   getState
@@ -85,6 +89,7 @@ export const payOrder = (orderId, paymentResult) => async (
     dispatch({
       type: ORDER_PAY_REQUEST,
     })
+
     const {
       userLogin: { userInfo },
     } = getState()
@@ -107,12 +112,53 @@ export const payOrder = (orderId, paymentResult) => async (
       payload: data,
     })
   } catch (error) {
+    const message =
+      error.response && error.response.data.message
+        ? error.response.data.message
+        : error.message
+    if (message === 'Not authorized, token failed') {
+      dispatch()
+    }
     dispatch({
       type: ORDER_PAY_FAIL,
-      payload:
-        error.response && error.response.data.message
-          ? error.response.data.message
-          : error.message,
+      payload: message,
+    })
+  }
+}
+
+export const listMyOrders = () => async (dispatch, getState) => {
+  try {
+    dispatch({
+      type: ORDER_LIST_MY_REQUEST,
+    })
+
+    const {
+      userLogin: { userInfo },
+    } = getState()
+
+    const config = {
+      headers: {
+        Authorization: `Bearer ${userInfo.token}`,
+      },
+    }
+
+    const { data } = await axios.get(`/api/orders/myorders`, config)
+
+    dispatch({
+      type: ORDER_LIST_MY_SUCCESS,
+      payload: data,
+    })
+  } catch (error) {
+    const message =
+      error.response && error.response.data.message
+        ? error.response.data.message
+        : error.message
+    if (message === 'Not authorized, token failed') {
+      dispatch(logout())
+    }
+    dispatch({
+      type: ORDER_LIST_MY_FAIL,
+      payload: message,
     })
   }
 }
