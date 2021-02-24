@@ -21,52 +21,52 @@ const productSchema = mongoose.Schema(
     },
     name: {
       type: String,
-      reqired: true,
+      required: true,
     },
 
     image: {
       type: String,
-      reqired: true,
+      required: true,
       unique: true,
     },
     brand: {
       type: String,
-      reqired: true,
+      required: true,
     },
 
     category: {
       type: String,
-      reqired: true,
+      required: true,
     },
 
     description: {
       type: String,
-      reqired: true,
+      required: true,
     },
 
     reviews: [reviewSchema],
 
     rating: {
       type: Number,
-      reqired: true,
+      required: true,
       default: 0,
     },
 
     numReviews: {
       type: Number,
-      reqired: true,
+      required: true,
       default: 0,
     },
 
     price: {
       type: Number,
-      reqired: true,
+      required: true,
       default: 0,
     },
 
     countInStock: {
       type: Number,
-      reqired: true,
+      required: true,
       default: 0,
     },
 
