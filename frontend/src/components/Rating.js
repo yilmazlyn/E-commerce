@@ -1,11 +1,9 @@
 import React from 'react'
-import PropTypes from 'prop-types'
 
 const Rating = ({ value, text, color }) => {
   return (
     <div className='rating'>
       <span>
-        {/* To show value of rating stars with full star, half star and empty star */}
         <i
           style={{ color }}
           className={
@@ -18,7 +16,6 @@ const Rating = ({ value, text, color }) => {
         ></i>
       </span>
       <span>
-        {/* To show value of rating stars with full star, half star and empty star */}
         <i
           style={{ color }}
           className={
@@ -31,7 +28,6 @@ const Rating = ({ value, text, color }) => {
         ></i>
       </span>
       <span>
-        {/* To show value of rating stars with full star, half star and empty star */}
         <i
           style={{ color }}
           className={
@@ -44,7 +40,6 @@ const Rating = ({ value, text, color }) => {
         ></i>
       </span>
       <span>
-        {/* To show value of rating stars with full star, half star and empty star */}
         <i
           style={{ color }}
           className={
@@ -57,7 +52,6 @@ const Rating = ({ value, text, color }) => {
         ></i>
       </span>
       <span>
-        {/* To show value of rating stars with full star, half star and empty star */}
         <i
           style={{ color }}
           className={
@@ -69,19 +63,13 @@ const Rating = ({ value, text, color }) => {
           }
         ></i>
       </span>
-      {/* if there is a text show the text  */}
-      <span>{text && text} </span>
+      <span>{text && text}</span>
     </div>
   )
 }
+
 Rating.defaultProps = {
   color: '#f8e825',
-  value: 0,
 }
 
-Rating.propTypes = {
-  value: PropTypes.number.isRequired,
-  text: PropTypes.string.isRequired,
-  color: PropTypes.string,
-}
 export default Rating
