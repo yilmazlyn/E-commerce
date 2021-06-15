@@ -6,7 +6,9 @@ import Message from '../components/Message'
 import Loader from '../components/Loader'
 import { listProducts } from '../actions/productActions'
 
-const HomeScreen = () => {
+const HomeScreen = ({ match }) => {
+  const keyword = match.params.keyword
+
   const dispatch = useDispatch()
 
   const productList = useSelector((state) => state.productList)
@@ -16,8 +18,8 @@ const HomeScreen = () => {
   //useEffect is getting arrow function with async function, so the page waits axios fetching to load the homescreen
   //
   useEffect(() => {
-    dispatch(listProducts())
-  }, [dispatch])
+    dispatch(listProducts(keyword))
+  }, [dispatch, keyword])
 
   return (
     <>
